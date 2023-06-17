@@ -1,5 +1,6 @@
 use rand::prelude::*;
-fn main() {
+
+pub fn add(left: usize, right: usize) -> usize {
     if rand::random() {
         // generates a boolean
         // Try printing a random unicode code point (probably a bad idea)!
@@ -11,5 +12,17 @@ fn main() {
 
     let mut nums: Vec<i32> = (1..100).collect();
     nums.shuffle(&mut rng);
-    println!("Hello, world!");
+
+    left + right
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        let result = add(2, 2);
+        assert_eq!(result, 4);
+    }
 }
