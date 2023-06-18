@@ -116,7 +116,7 @@ jobs:
         if: hashFiles('Cargo.lock') == ''
         run: cargo generate-lockfile
       - name: cargo tarpaulin
-        run: cargo tarpaulin --verbose --all-features --workspace --timeout 120 --out Xml
+        run: cargo tarpaulin --verbose --all-features --workspace --timeout 120 --coveralls ${{ secrets.COVERALLS_TOKEN }}
       - name: Upload to codecov.io
         uses: codecov/codecov-action@v3
         with:
