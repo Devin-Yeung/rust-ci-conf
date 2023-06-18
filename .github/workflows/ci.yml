@@ -8,7 +8,7 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
-name: ci / cd
+name: CI
 jobs:
   fmt:
     runs-on: ubuntu-latest
@@ -61,7 +61,7 @@ jobs:
           RUSTDOCFLAGS: --cfg docsrs
   required:
     runs-on: ubuntu-latest
-    name: ubuntu / ${{ matrix.toolchain }}
+    name: ubuntu / ${{ matrix.toolchain }} / test
     strategy:
       matrix:
         toolchain: [stable, beta]
@@ -84,7 +84,7 @@ jobs:
         run: cargo test --locked --all-features --doc
   os-check:
     runs-on: ${{ matrix.os }}
-    name: ${{ matrix.os }} / stable
+    name: ${{ matrix.os }} / stable / test
     strategy:
       fail-fast: false
       matrix:
