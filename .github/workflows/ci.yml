@@ -104,8 +104,8 @@ jobs:
     runs-on: ubuntu-latest
     name: ubuntu / stable / coverage
     container:
-      image: xd009642/tarpaulin:latest-slim
-      # options: --security-opt seccomp=unconfined
+      image: xd009642/tarpaulin:latest
+      options: --security-opt seccomp=unconfined
     steps:
       - uses: actions/checkout@v3
         with:
